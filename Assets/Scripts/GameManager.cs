@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
     {
         total1 = score + minus;
         total1 = total2;
-        if(total1 > highScore) { highScore = score; }
+        if(total2 > highScore) { highScore = score; }
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
         minusText.GetComponent<TextMeshProUGUI>().text = minus.ToString();
-        totalText.GetComponent<TextMeshProUGUI>().text = total1.ToString();
+        totalText.GetComponent<TextMeshProUGUI>().text = total2.ToString();
         highScoreText.GetComponent<TextMeshProUGUI>().text = highScore.ToString();
         time -= Time.deltaTime;
         toTitle -= Time.deltaTime;
