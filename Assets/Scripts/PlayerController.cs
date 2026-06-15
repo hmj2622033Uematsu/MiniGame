@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 { 
     SpriteRenderer spriteRenderer;
     [SerializeField] GameObject manager;
+    [SerializeField] AudioClip tikuwaSE;
+    [SerializeField] AudioClip dumbbellSE;
+    AudioSource aud;
     Rigidbody2D rigid2D;
     float sideforce = 20f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         rigid2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        aud = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,6 +30,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("‚¿‚­‚í");
             Destroy(collision.gameObject);
             manager.GetComponent<GameManager>().GetTikuwa();
+            aud.PlayOneShot(tikuwaSE);
 
         }
         if(collision.gameObject.tag == "dumbbell")
@@ -33,6 +38,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("“SƒAƒŒƒC");
             Destroy(collision.gameObject);
             manager.GetComponent<GameManager>().GetDumbbell();
+            aud.PlayOneShot(dumbbellSE);
         }
     }
 

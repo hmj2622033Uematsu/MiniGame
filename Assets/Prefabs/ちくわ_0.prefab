@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemController
   item: {fileID: 546049041368620825}
+  tikuwaSound: {fileID: 8300000, guid: a26c9e47e7146764da5c44a0f87bc734, type: 3}
+  dumbbellSound: {fileID: 0}

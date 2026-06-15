@@ -7,17 +7,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     float time = 13.5f;
-    static float toTitle = 18;
+    static float toTitle = 17;
     static int score = 0;
     static int highScore = 0;
     static int minus = 0;
     int total1 = 0;
-    int total2 = 0;
+    //int total2 = 0;
     
     [SerializeField] GameObject scoreText;
     [SerializeField] GameObject minusText;
     [SerializeField] GameObject totalText;
-    [SerializeField] GameObject highScoreText;
+    //[SerializeField] AudioClip resultjin;
+    //AudioSource aud;
+     // [SerializeField] GameObject highScoreText;
     //Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public void GetTikuwa()
@@ -32,7 +34,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60; 
+        //aud = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -40,13 +44,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // スコアの表示
         total1 = score + minus;
-        total1 = total2;
-        if(total2 > highScore) { highScore = score; }
+        //total1 = total2;
+        if(total1 >= highScore) { highScore = total1; }
         scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
         minusText.GetComponent<TextMeshProUGUI>().text = minus.ToString();
-        totalText.GetComponent<TextMeshProUGUI>().text = total2.ToString();
-        highScoreText.GetComponent<TextMeshProUGUI>().text = highScore.ToString();
+        totalText.GetComponent<TextMeshProUGUI>().text = total1.ToString();
+        //highScoreText.GetComponent<TextMeshProUGUI>().text = highScore.ToString();
         time -= Time.deltaTime;
         toTitle -= Time.deltaTime;
         // リザルト画面へ
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("時間切れ");
             SceneManager.LoadScene("ResultScene");
+            //AudioSource.PlayClipAtPoint(resultjin, transform.position);
 
         }
         //タイトル画面へ
