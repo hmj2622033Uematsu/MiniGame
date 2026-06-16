@@ -1,8 +1,11 @@
 using Unity.VisualScripting.InputSystem;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 
 
 
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             rigid2D.AddForce(Vector2.left * sideforce);
             GetComponent<SpriteRenderer>().flipX = false;
+            //rigid2D.AddForce(transform.right * sideforce / 2);
         }
         // ‰E–îˆó
         if (Keyboard.current.rightArrowKey.isPressed)
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour
             rigid2D.AddForce(transform.right * sideforce);
             //transform.Translate(1, 0, 0);
             GetComponent<SpriteRenderer>().flipX = true;
+            //rigid2D.AddForce(Vector2.left * sideforce / 2);
         }
-
     }
 }
